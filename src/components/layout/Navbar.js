@@ -19,6 +19,6 @@ const Navbar = ({icon, title}) => {
 }
 Navbar.defaultProps = {
     title: 'Github Finder',
-    icon: 'fa fa-github'
+    icon: 'fa fa-github fa-2x'
 }
 export default Navbar
