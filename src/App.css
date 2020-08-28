@@ -1,20 +1,60 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 * {
     margin: 0;
 }
-
-.Nav {
-    background-color: crimson;
-    padding: 1em;
-    color: white;
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    background-color: #fff;
+    color: #333;
 }
 
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 2rem;
+    z-index: 1;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+    color: white;
+    background-color: crimson;
+}
+ul {
+    list-style: none;
+
+}
+.nav-title{
+    font-size: 23px;
+}
+.navbar ul {
+    display: flex;
+}
+
+.navbar a {
+    color: #fff;
+    padding: 0.45rem;
+    margin: 0 0.5rem;
+    text-decoration: none;
+}
+
+.navbar ul a:hover {
+    color: burlywood;
+}
 .container {
-    margin: 1rem 10rem;
+    max-width: 1100px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 2rem;
 }
 
 .card {
     border: 1px solid #404040;
     padding: 1rem;
+}
+.display-inline-block {
+    display: inline-block;
 }
 
 .img-circle {
@@ -24,6 +64,16 @@
 
 .text-center {
     text-align: center;
+}
+
+.font-weight-lighter{
+    font-weight: lighter;
+}
+.opacity-500{
+    opacity: 0.5;
+}
+.opacity-700{
+    opacity: 0.7;
 }
 
 .btn {
@@ -40,6 +90,12 @@
 .btn-dark {
     background-color: darkslategrey;
 }
+.text-dark{
+    color: darkslategrey;
+}
+.bold {
+    font-weight: bold;
+}
 .text-input{
     border: 1px solid #848484;
     -webkit-border-radius: 30px;
@@ -49,5 +105,53 @@
     height:25px;
     width: 100%;
     padding: 0.5rem;
-
+}
+.alert {
+    padding: 0.7rem;
+    margin: 1rem 0;
+    opacity: 0.9;
+    background: antiquewhite;
+    color: black;
+    border-radius: 30px;
+    display: inline-block;
+    width: 30%;
+}
+.alert-light {
+    background: aliceblue;
+    color: black;
+}
+.alert-dark {
+    background: darkslategrey;
+    color: white;
+}
+.alert-danger {
+    background: indianred;
+    color: white;
+}
+.user-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+}
+@media only screen and (max-width: 600px) {
+    .user-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .nav-title{
+        font-size: 16px;
+    }
+    .navbar a {
+        font-size: 14px;
+    }
+}
+@media only screen and (max-width: 380px) {
+    .user-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .nav-title{
+        font-size: 14px;
+    }
+    .navbar a {
+        font-size: 12px;
+    }
 }

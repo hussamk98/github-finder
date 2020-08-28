@@ -1,24 +1,20 @@
 import React, {Fragment} from "react";
 import UserItem from "./UserItem";
 import Spinner from "../layout/Spinner";
+import Alert from "../layout/Alert";
 
-const Users = ({loading, users}) => {
+const Users = ({loading, users, setAlert}) => {
     if (loading) {
         return <Spinner/>
-    } else {
+    }
+    else {
         return (
-            <div style={userStyle}>
+            <div className='user-grid'>
                 {users.map(user => (
                     <UserItem user={user} key={user.id}/>
                 ))}
             </div>
         )
     }
-}
-
-const userStyle = {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, 1fr)',
-    gridGap: '1rem'
 }
 export default Users

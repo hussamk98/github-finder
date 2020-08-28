@@ -6,8 +6,12 @@ class Search extends Component {
     }
     onSubmit = (e) => {
         e.preventDefault()
-        this.props.searchFunction(this.state.search_text)
-        this.setState({search_text: ''})
+        if (this.state.search_text === '') {
+            this.props.setAlert('Please Enter Something', 'light')
+        } else {
+            this.props.searchFunction(this.state.search_text)
+            this.setState({search_text: ''})
+        }
     }
     onChange = (e) => this.setState({search_text: e.target.value})
 
@@ -21,14 +25,13 @@ class Search extends Component {
                            value={this.state.search_text}
                            placeholder='Search users...'
                            name='text'/>
-                    <input type="submit" value='Search' className='btn btn-dark' />
+                    <input type="submit" value='Search' className='btn btn-dark'/>
                     <span>
                         {this.props.showClear && (
-                            <button onClick={this.props.clearUsers} className='btn' >Clear</button>
+                            <button onClick={this.props.clearUsers} className='btn text-dark bold'>Clear</button>
                         )}
                     </span>
                 </form>
-
             </div>
         )
     }
