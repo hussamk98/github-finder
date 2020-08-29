@@ -13,13 +13,8 @@ import {
 
 let githubClientId
 let githubClientSecret
-if(process.env.NODE_ENV !== 'production'){
-    githubClientId = process.env.REACT_APP_GITHUB_CLIENT_ID
-    githubClientSecret = process.env.REACT_APP_GITHUB_CLIENT_SECRET
-}else {
-    githubClientId = process.env.GITHUB_CLIENT_ID
-    githubClientSecret = process.env.GITHUB_CLIENT_SECRET
-}
+githubClientId = process.env.REACT_APP_GITHUB_CLIENT_ID
+githubClientSecret = process.env.REACT_APP_GITHUB_CLIENT_SECRET
 
 
 const GithubState = props => {
@@ -43,7 +38,7 @@ const GithubState = props => {
                 type: SEACRH_USERS,
                 payload: users.data.items
             })
-            if(users.data.items.length === 0) alertContext.setAlert('No results found!', 'danger')
+            if (users.data.items.length === 0) alertContext.setAlert('No results found!', 'danger')
         } catch (err) {
             dispatch({type: NOT_LOADING})
             alertContext.setAlert('Something went wrong!', 'danger')
