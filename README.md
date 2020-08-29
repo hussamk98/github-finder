@@ -1,5 +1,3 @@
-## Available Scripts
-
 Clone the repo and run 
 
 ### `npm install`
