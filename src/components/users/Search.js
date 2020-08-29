@@ -8,7 +8,7 @@ const Search = () => {
     const githubContext = useContext(GithubContext)
     const alertContext = useContext(AlertContext)
 
-    const {clearUsers, searchFunction, showClear} = githubContext
+    const {clearUsers, searchFunction, users} = githubContext
     const {setAlert} = alertContext
 
 
@@ -34,7 +34,7 @@ const Search = () => {
                        name='text'/>
                 <input type="submit" value='Search' className='btn btn-dark'/>
                 <span>
-                        {showClear && (
+                        {users.length >0 && (
                             <button onClick={clearUsers} className='btn text-dark bold'>Clear</button>
                         )}
                     </span>
