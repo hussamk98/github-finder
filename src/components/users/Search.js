@@ -1,41 +1,46 @@
-import React, {Component} from "react";
+import React, {useContext, useState} from "react";
+import GithubContext from "../../context/github/githubContext";
+import AlertContext from "../../context/alert/alertContext";
 
-class Search extends Component {
-    state = {
-        search_text: ''
-    }
-    onSubmit = (e) => {
+const Search = () => {
+    const [search_text, setSearch_text] = useState('')
+
+    const githubContext = useContext(GithubContext)
+    const alertContext = useContext(AlertContext)
+
+    const {clearUsers, searchFunction, showClear} = githubContext
+    const {setAlert} = alertContext
+
+
+    const onSubmit = (e) => {
         e.preventDefault()
-        if (this.state.search_text === '') {
-            this.props.setAlert('Please Enter Something', 'light')
+        if (search_text === '') {
+            setAlert('Please Enter Something', 'light')
         } else {
-            this.props.searchFunction(this.state.search_text)
-            this.setState({search_text: ''})
+            searchFunction(search_text)
+            setSearch_text('')
         }
     }
-    onChange = (e) => this.setState({search_text: e.target.value})
+    const onChange = (e) => setSearch_text(e.target.value)
 
-    render() {
-        return (
-            <div>
-                <form onSubmit={this.onSubmit} style={{width: '100%'}}>
-                    <input className='text-input'
-                           type="text"
-                           onChange={this.onChange}
-                           value={this.state.search_text}
-                           placeholder='Search users...'
-                           name='text'/>
-                    <input type="submit" value='Search' className='btn btn-dark'/>
-                    <span>
-                        {this.props.showClear && (
-                            <button onClick={this.props.clearUsers} className='btn text-dark bold'>Clear</button>
+    return (
+        <div>
+            <form onSubmit={onSubmit} style={{width: '100%'}}>
+                <input className='text-input'
+                       type="text"
+                       onChange={onChange}
+                       value={search_text}
+                       placeholder='Search users...'
+                       name='text'/>
+                <input type="submit" value='Search' className='btn btn-dark'/>
+                <span>
+                        {showClear && (
+                            <button onClick={clearUsers} className='btn text-dark bold'>Clear</button>
                         )}
                     </span>
-                </form>
-            </div>
-        )
-    }
+            </form>
+        </div>
+    )
 }
-
 export default Search
 
